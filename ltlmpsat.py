@@ -1,3 +1,6 @@
+#! /usr/bin/env python
+# -*- coding:utf-8 -*-
+
 import sys
 import subprocess
 import copy
@@ -123,7 +126,7 @@ def get_SMTCode(mdg, mp_prop, opts):
             # nx.draw_circular(scc)
             accept = 0
             if opts.tgba:
-                a = reduce(lambda x,y:x|y, [set(edge[2]['acc']) for edge in scc.edges(data=True)])
+                a = reduce(lambda x, y : x | y , [set(edge[2]['acc']) for edge in scc.edges(data=True)])
                 print a
                 acceptlist = list(a)
                 print acceptlist
@@ -144,6 +147,7 @@ def get_SMTCode(mdg, mp_prop, opts):
                     if 'accept' in node:
                         accept = 1
                         break
+                        
             if accept == 1:
                 if opts.debug:
                     print '\t found BA/TGBA-Accept SCC'
