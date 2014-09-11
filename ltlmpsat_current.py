@@ -17,7 +17,7 @@ from antlr_files.LTLMPTree import LTLMPTree
 
 from tree_ltlmp import tree
 import tree_ltlmp as tltl
-import generategraph as gg
+import generate_graph as gg
 import translate_tree as tmtc
 import runsmt
 
@@ -214,7 +214,7 @@ def graph_tgba(pair, opts):
     if graph:
         props = []
         for mp in mplist:
-            results['mp-prop-pair'].append({'mp':tltl.all_term_in_mp_to_simple(mp), 'prop':tltl.get_proplist(mp)})
+            results['mp-prop-pair'].append({'mp':tltl._simplify_all_term_in_mp(mp), 'prop':tltl.get_proplist(mp)})
         results['graph'] = graph
         # results['mplist'] = copy.deepcopy(mplist)
         # results['mpprops'] = props
@@ -244,7 +244,7 @@ def graph_ltltrans(pair, opts):
     if graph:
         props = []
         for mp in mplist:
-            results['mp-prop-pair'].append({'mp':tltl.all_term_in_mp_to_simple(mp), 'prop':tltl.get_proplist(mp)})
+            results['mp-prop-pair'].append({'mp':tltl._simplify_all_term_in_mp(mp), 'prop':tltl.get_proplist(mp)})
         results['graph'] = graph
         # results['mplist'] = copy.deepcopy(mplist)
         # results['mpprops'] = props
@@ -274,7 +274,7 @@ def graph_ba(pair, opts):
     if graph:
         props = []
         for mp in mplist:
-            results['mp-prop-pair'].append({'mp':tltl.all_term_in_mp_to_simple(mp), 'prop':tltl.get_proplist(mp)})
+            results['mp-prop-pair'].append({'mp':tltl._simplify_all_term_in_mp(mp), 'prop':tltl.get_proplist(mp)})
         results['graph'] = graph
         # results['mplist'] = copy.deepcopy(mplist)
         # results['mpprops'] = props

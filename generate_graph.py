@@ -4,9 +4,8 @@ import re
 import time
 ## interpret SPIN neverclaim input
 def tgba2graph(tgba_input, starttime, opts):
-    # input: spot tgba
-    # output: Graph
-    #            False
+    # input: <spot's tgba>
+    # output: <Graph> / False
     # assumption: cond-format is DNF
     acclist_all = []
     graph = nx.MultiDiGraph(acccond=acclist_all)
@@ -65,7 +64,7 @@ def tgba2graph(tgba_input, starttime, opts):
     if opts.pdebug:
         print '    accept condlist: ', str(graph.graph['acccond'])
     en = time.time()
-    print '  -- DiGraph Construction Time:  '+ str(en-st)
+    print '  -- DiGraph Construction Time:  ' + str(en-st)
     return graph
 
 def nvc2graph(nvc_input, starttime, opts):
@@ -189,7 +188,7 @@ def ltltrans2graph(nvc_input, starttime, opts):
         return False
     en = time.time()
     if opts.debug:
-        print '  -- DiGraph Construction Time:  '+ str(en-st)
+        print '  -- DiGraph Construction Time:  ' + str(en-st)
     return graph
 
 """

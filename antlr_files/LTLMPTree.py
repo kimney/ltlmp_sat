@@ -7,7 +7,7 @@ from antlr3.tree import *
 from antlr3.compat import set, frozenset
 
         
-from tree_ltlmp import tree as maketree
+from tree_ltlmp import Tree as maketree
 
 
 

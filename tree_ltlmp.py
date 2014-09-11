@@ -1,6 +1,8 @@
 import copy
 import re
-class tree:
+
+
+class Tree:
     def __init__ (self, x):
         self.data = x
         self.child = [] # children class must be tree[this]
@@ -60,12 +62,12 @@ class tree:
         return temp
     
     def remove_child(self):
-        self.child= []
+        self.child = []
 
     def reverse_MP(self):
         # MP ineq in attr[0] = '<', attr[1] = 0(constant)
         # INEQ-op MUST be in attr[0]
-        if (self.data == 'MP^') or (self.data == 'MP_'): #IDK If this syntacxis proper
+        if (self.data == 'MP^') or (self.data == 'MP_'):
             if self.ineq == '<=':
                 self.ineq = '>'
             elif self.ineq == '<':
@@ -81,7 +83,7 @@ class tree:
     # process all MP terms into U-indipendent term
     # MP( 3_(a AND b U c ) - 2_(true) + MP(a)<=0 + MP(a U b)<=0  ) <= 0
     #
-    #  1. replace all-UntilTerm to Prop and  (Prop<->UntilTerm),
+    #  1. replace all-UntilTerm to Prop and  (Prop <-> UntilTerm),
     #     MP(... t_(~  bUc ) ...) <= 0 
     #  to MP(... t_(~ p[bUc]) ...) <= 0  &  p <-> bUc
     #       ( aUbUcU... is replaced by p[aUbUcU...] )
@@ -98,9 +100,9 @@ class tree:
     #                                                         c*2^d (outerTraversal)
     # 
     #  I DONT KNOW: whether 1. first is better or not
-'---------- end class def -----'
 
-def get_not_MPNF_MP_tree(tree):
+
+def _get_mp_node_in_ltl(tree):
     # input: tree (its root, in which u want to find notMPNF node)
     # output: tree (if the not'MPNF' MP-node)
     #            False (otherwise)
@@ -110,21 +112,21 @@ def get_not_MPNF_MP_tree(tree):
             return tree
     'check whtr Child is MPNF or not'        
     for cld in tree.child:
-        a = get_not_MPNF_MP_tree(cld)
+        a = _get_mp_node_in_ltl(cld)
         if a:
             return a
     return False
 
-def get_not_MPNF_MP_tree_deepest(root):
+def _get_mp_node_in_ltl_deepest(root):
     # input: tree (its root, in which u want to find deepest notMPNF node)
     # output: tree (if deepest notMPNF node)
     #            False (if not found) 
-    temp = get_not_MPNF_MP_tree(root)
+    temp = _get_mp_node_in_ltl(root)
     if temp:
         while True:
             old = temp
             for cld in temp.child:
-                a = get_not_MPNF_MP_tree(cld)
+                a = _get_mp_node_in_ltl(cld)
                 if a:
                     temp = a
                     break
@@ -132,67 +134,71 @@ def get_not_MPNF_MP_tree_deepest(root):
                 break
     return temp
 
-def replaced_MP_tree_list(root, r_mp):
+def _get_mp_replaced_pair_list(root, r_mp):
     # input: tree (its root)
-    #          MP-node(will be replaced by T/F)
-    # output: list (OR (AND LTL-MP) (AND LTL-MP)) 
+    #          MP-node(will be replaced by T/F 1/0)
+    # output: list (OR (AND LTL-MP) (AND LTL-MP))
+
     mp1 = copy.deepcopy(r_mp)
     mp1.set_attr('MPNF')
     mp2 = copy.deepcopy(r_mp)
     mp2.reverse_MP()
     mp2.set_attr('MPNF')
+
     # Make True/False Subtree
     r_mp.remove_child()
     r_mp.data = 'true'
     ltl1 = copy.deepcopy(root)
     r_mp.data = 'false'
     ltl2 = copy.deepcopy(root)
-    return [[ltl1,[mp1]], [ltl2,[mp2]]]
+    return [[ltl1, [mp1]], [ltl2, [mp2]]]
     
-def get_MPNF_list(root):
-    # input: tree(its root)
+def get_mpnf_list(root):
+    # input: tree(of its root)
     # output: OR-List( AND-Pair(LTL, Simple-MP) )
     #            False if fail to create
-    
-    newroot = root
-    pairList = []
+
     # : pairList = {(LTL, MP-List)}
     # semantics: LTL and MP in MP-List are connected by AND (i.e. MPNF)
-    r_mp = False
 
     # Firstly, convert root to MPNF
+    root_mp = False
     if root.find_node('MP^'):
-        r_mp = root.get_tree_deepest(root, 'MP^')
+        root_mp = root.get_tree_deepest(root, 'MP^')
     elif root.find_node('MP_'):
-        r_mp = root.get_tree_deepest(root, 'MP_')
-    if r_mp:
-        a = replaced_MP_tree_list(root, r_mp)
-        pairList = a
+        root_mp = root.get_tree_deepest(root, 'MP_')
+
+    if root_mp:
+        a = _get_mp_replaced_pair_list(root, root_mp)
+        ltl_mp_pair_list = a
     else:
-        print 'Error (MP_nest_proto): MP not found'
+        print 'Error : MP not found in Tree. '
         return False #Escape
 
     # Secondery, find and convert to MPNF for Children
     while True:
-        old = copy.copy(pairList) # infinit Loop if deepcopy
-        for pair in pairList:
-            ltl_chk = pair[0] # pair[0] is LTL(may contain MP)
-            replace = get_not_MPNF_MP_tree_deepest(ltl_chk)
-            if replace:
-                # refresh pairList if no-MPNF found
-                a = replaced_MP_tree_list(ltl_chk, replace)
-                pairList.remove(pair)
-                # extending List
-                mp = pair[1] # pair[1] is MP-List (Type: list(tree)  #not tree)
+        # NOTE: infinite Loop if deepcopy
+        old = copy.copy(ltl_mp_pair_list)
+        for pair in ltl_mp_pair_list:
+            # pair[0] is root of LTL (may contain MP)
+            # pair[1] is MP-List (Type: list(tree)  #not tree)
+            ltl = pair[0]
+            mp = pair[1]
+            replace_node = _get_mp_node_in_ltl_deepest(ltl)
+            if replace_node:
+                # refresh pairList if no MPNF found
+                a = _get_mp_replaced_pair_list(ltl, replace_node)
+                ltl_mp_pair_list.remove(pair)
+                # extending MP List
                 a[0][1].extend(copy.deepcopy(mp))
                 a[1][1].extend(copy.deepcopy(mp))
-                pairList.extend(a)
+                ltl_mp_pair_list.extend(a)
                 break
-        if pairList == old:
+        if ltl_mp_pair_list == old:
             break
-    for mpnf_pair in pairList:
+    for mpnf_pair in ltl_mp_pair_list:
         replace_timed_MP(mpnf_pair)
-    return pairList
+    return ltl_mp_pair_list
 
 def allprint(tree):
     print tree.data
@@ -208,7 +214,7 @@ def replace_timed_MP(mpnf_pair):
         #print ' --- while loop -----'
         while True:
             # get Timed LTL tree in simplified MP tree
-            timed = mpnf_pair[1][0].get_tree_deepest(mp,'U')
+            timed = mpnf_pair[1][0].get_tree_deepest(mp, 'U')
             if not timed:
                 timed = mp.get_tree('G')
                 if not timed:
@@ -216,10 +222,10 @@ def replace_timed_MP(mpnf_pair):
                     if not timed:
                         timed = mp.get_tree('X')
             if timed:
-                p = get_new_prop()
+                p = _get_new_prop()
                 # create (timed-sentence <-> new-prop)
-                eq = tree('EQ')
-                eql = tree(p)
+                eq = Tree('EQ')
+                eql = Tree(p)
                 eqr = copy.deepcopy(timed)
                 eq.child.append(eql)
                 eq.child.append(eqr)
@@ -233,30 +239,31 @@ def replace_timed_MP(mpnf_pair):
                 #  timed = tree(p)
                 # create and update LTL
                 oldLTL = copy.deepcopy(mpnf_pair[0])
-                newLTL = tree('AND')
+                newLTL = Tree('AND')
                 newLTL.child.append(oldLTL)
                 newLTL.child.append(eq)
                 mpnf_pair.pop(0)
                 mpnf_pair.insert(0, newLTL)
             else:
                 break
-    reset_count()
+    _reset_count()
 
-count = 0
-def reset_count():
-    global count
-    count = 0
-def get_new_prop():
+_count = 0
+def _reset_count():
+    global _count
+    _count = 0
+
+def _get_new_prop():
     # output: prop neverused in current LTL
-    global count
-    count = count+1
-    return 'np'+repr(count)
+    global _count
+    _count = _count+1
+    return 'np'+repr(_count)
 
 '----- expression ----- '
-def all_term_in_mp_to_simple(inputmp):
+def _simplify_all_term_in_mp(mp_input):
     # input: expr(tree)
     # output: expr(tree) with only Props and 0-1s
-    mp = copy.deepcopy(inputmp)
+    mp = copy.deepcopy(mp_input)
     while True:
         a = mp.get_tree('TERM')
         if a:
@@ -283,7 +290,7 @@ def all_term_in_mp_to_simple(inputmp):
                     nt.data = '-'
                     nt0 = nt.child[0]
                     nt.remove_child()
-                    nt.child.append(tree('1'))
+                    nt.child.append(Tree('1'))
                     nt.child.append(nt0)
                 else:
                     break
@@ -302,9 +309,9 @@ def all_term_in_mp_to_simple(inputmp):
                     ot1 = ot.child[1]
                     ot.remove_child()
                     ot.child.append(ot0)
-                    t2 = tree('-')
+                    t2 = Tree('-')
                     t2.child.append(ot1)
-                    t3 = tree('*')
+                    t3 = Tree('*')
                     t3.child.append(copy.deepcopy(ot0))
                     t3.child.append(copy.deepcopy(ot1))
                     t2.child.append(t3)
@@ -314,6 +321,7 @@ def all_term_in_mp_to_simple(inputmp):
         else:
             break
     return mp
+
 
 def decide_cond_pos(mp, a):
     # slow implement

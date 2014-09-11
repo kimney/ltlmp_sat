@@ -10,5 +10,6 @@ do
 		echo "sharpnotfound!"
 		python ./ltlmpsat.py -f "$line"
 		python ./ltlmpsat.py -t -f "$line"
+		python ./ltlmpsat.py -l -f "$line"
 	fi
 done < "./tests/ltlmp_bench"
