@@ -428,18 +428,17 @@ def show_progress3(MPNF_List):
 
 
 class SatContent:
-    class SatContentUnit:
-        class OrUnit:
+    class MpnfUnit:
+        class SccUnit:
             def __init__(self, smt_code, smt_gen_time, opts):
                 self.smt_code = smt_code
                 self.opts = opts
                 self.time = [('smt_gencode_time', smt_gen_time)]
 
-            # works?
             def execute_smt_solver(self):
                 cmd_smt = './yices yicesinput'
                 filename = 'yicesinput'
-                unsat_scc = 0
+                unsat = 0
 
                 for codes in self.smt_code:
                     '     ---- solving Constraints ---- '
@@ -451,10 +450,10 @@ class SatContent:
 
                     for line in smt_solver.stdout:
                         if 'unsat' in line:
-                            unsat_scc = 1
+                            unsat = 1
                             break
 
-                if unsat_scc == 0:
+                if unsat == 0:
                     return True
                 return False
 
@@ -466,14 +465,15 @@ class SatContent:
                 return torf
 
             def print_result(self):
-                print(self.time)
+                for tm in self.time:
+                    print "\t\t", tm[0], "\t", tm[1]
 
         def __init__(self, pair, opts):
             self.graph = None
             self.mpnf = None
             self.pair = pair
             self.time = []
-            self.result_info_mdg = None
+            self.info = []
             self.mdg = None
             self.sccs = []
             self.sat_or_list = []
@@ -487,32 +487,35 @@ class SatContent:
                                  for mp in self.pair[1]]
             self.graph = self._make_graph_by_opts()
             en = time.time()
-            self.time.append(('make_graph:', en - st))
+            self.time.append(('make_graph(scc_u):', en - st))
+
             if not self.graph:
                 #print "non-graph"
                 raise ValueError
             else:
-                #print self.graph
-                self._show_graph_info(self.graph)
+                #self._show_graph_info(self.graph)
+                pass
 
         def _make_graph_by_opts(self):
             ltl = self.pair[0]
 
             if opts.tgba:
+                print "-- TGBA!"
                 cmd_ltl2tgba = 'ltl2tgba --low -f ' + '\'' + tmtc.ltl_out(ltl) + '\''
                 ltl2tgba = subprocess.Popen(cmd_ltl2tgba, shell=True, close_fds=True, stdout=subprocess.PIPE)
                 out = ltl2tgba.stdout
-                graph = gg.tgba2graph(out, 0, self.opts)
+                graph = gg.tgba2graph(out, time.time(), self.opts)
             elif opts.ltltrans:
                 cmd_ltltrans = './translator/ltltrans -f ' + '\'' + tmtc.ltl_out_trans(ltl) + '\''
                 ltltrans = subprocess.Popen(cmd_ltltrans, shell=True, close_fds=True, stdout=subprocess.PIPE)
                 out = ltltrans.stdout
-                graph = gg.ltltrans2graph(out, 0, self.opts)
+                graph = gg.ltltrans2graph(out, time.time(), self.opts)
             else:
+                print "-- BA!"
                 cmd_ltl3ba = './translator/ltl3ba -f ' + "'" + tmtc.ltl_out(ltl) + "'"
                 ltl3ba = subprocess.Popen(cmd_ltl3ba, shell=True, close_fds=True, stdout=subprocess.PIPE)
                 out = ltl3ba.stdout
-                graph = gg.nvc2graph(out, 0, self.opts)
+                graph = gg.nvc2graph(out, time.time(), self.opts)
 
             return graph
 
@@ -520,25 +523,49 @@ class SatContent:
         def _show_graph_info(graph):
             print 'nodes:', nx.number_of_nodes(graph), '\t edges:', nx.number_of_edges(graph)
 
-        def convert_graph_to_mdg(self): #convert_mpnf
+        def generate_smtcode(self):
             st = time.time()
-            self.mdg = get_weighted_graph(self.graph, self.pair_mp_prop, self.opts)
+
+            sccs = self._gen_sccs(self.graph)
+
+            for scc in sccs:
+                self.mdg = get_weighted_graph(scc, self.pair_mp_prop, self.opts)
+
+            self.info.extend([('g_nodes', nx.number_of_nodes(self.graph)),
+                              ('g_edges', nx.number_of_edges(self.graph)),
+                                    ('mdg_nodes', nx.number_of_nodes(self.mdg)),
+                                    ('mdg_edges', nx.number_of_edges(self.mdg))])
+
+            self._gen_smt_from_graph(sccs)
             en = time.time()
 
-            self.time.append(('convert_graph_to_mdg', en - st))
-            self.result_info_mdg = [('g_nodes', nx.number_of_nodes(self.graph)),
+            self.time.append(('total gen_smt: graph->scc->mdg(scc)', en - st))
+
+
+        def generate_smtcode_old(self): #convert_mpnf
+            st = time.time()
+            self.mdg = get_weighted_graph(self.graph, self.pair_mp_prop, self.opts)
+
+            self.info.extend([('g_nodes', nx.number_of_nodes(self.graph)),
                                     ('g_edges', nx.number_of_edges(self.graph)),
                                     ('mdg_nodes', nx.number_of_nodes(self.mdg)),
-                                    ('mdg_edges', nx.number_of_edges(self.mdg))]
+                                    ('mdg_edges', nx.number_of_edges(self.mdg))])
 
-        def generate_smtcode(self):
-            self._gen_sccs()
-            self._gen_smt_from_graph()
+            sccs = self._gen_sccs(self.mdg)
 
-        def _gen_sccs(self):
-            self.sccs = nx.strongly_connected_component_subgraphs(self.mdg)
+            self._gen_smt_from_graph(sccs)
 
-        def _gen_smt_from_graph(self):
+            en = time.time()
+            self.time.append(('total gen_smt: graph->mdg->mdg(scc)', en - st))
+
+        def _gen_sccs(self, digraph):
+            st = time.time()
+            g = nx.strongly_connected_component_subgraphs(digraph)
+            en = time.time()
+            print '\t\t\t scc time:', en - st
+            return g
+
+        def _gen_smt_from_graph(self, sccs):
             def gen_smt(sat_or_list, scc, mp_prop, opts):
                 if scc.edges() == []:
                     pass
@@ -559,23 +586,30 @@ class SatContent:
                                 break
 
                     if accept == 1:
-                        code_and_time = runsmt.gen_smtcodelist_time(scc, mp_prop, self.opts)
+                        code_and_time = runsmt.gen_smtcodelist_time(scc, mp_prop, opts)
                         code = code_and_time['code']
                         time = code_and_time['time']
-                        sat_or_list.append(self.OrUnit(code, time, opts))
+                        sat_or_list.append(self.SccUnit(code, time, opts))
 
-            mp_prop = self.pair_mp_prop
-            for scc_mdg in self.sccs:
-                gen_smt(self.sat_or_list, scc_mdg, mp_prop, self.opts)
+            for scc_mdg in sccs:
+                gen_smt(self.sat_or_list, scc_mdg, self.pair_mp_prop, self.opts)
 
         def do_sat(self):
+            st = time.time()
             for or_unit in self.sat_or_list:
                 if or_unit.sat():
+                    en = time.time()
+                    self.time.append(('do_sat(total_ex_smt):', en - st))
                     return True
+            en = time.time()
+            self.time.append(('do_sat(total_ex_smt / mpnf):', en - st))
             return False
 
         def print_result(self):
-            print(self.time)
+            for tm in self.time:
+                print "\t", tm[0], "\t", tm[1]
+            for inf in self.info:
+                print "\t\t", inf[0], "\t", inf[1]
             for oru in self.sat_or_list:
                 oru.print_result()
 
@@ -588,9 +622,9 @@ class SatContent:
         self.sat = None
         self.results = []
         for pair in ltl_mp_pair_list:
-            self.sat_units.append(self.SatContentUnit(pair, self.opts))
+            self.sat_units.append(self.MpnfUnit(pair, self.opts))
 
-    def all_through(self):
+    def strat_all_through(self):
         print 'sat_units:', len(self.sat_units), self.sat_units
         cnt = 0
         for unit in self.sat_units:
@@ -598,48 +632,64 @@ class SatContent:
             cnt += 1
             try:
                 unit.make_graph()
-                unit.convert_graph_to_mdg()
                 unit.generate_smtcode()
+                a = unit.do_sat()
+                self.results.append(a)
+                if a == True:
+                    return 0
+            except ValueError:
+                print "unit abort: nothing do more"
+
+    def strat_all_through_old(self):
+        st = time.time()
+        print 'sat_units:', len(self.sat_units), self.sat_units
+        cnt = 0
+        for unit in self.sat_units:
+            print "unit", cnt
+            cnt += 1
+            try:
+                unit.make_graph()
+                unit.generate_smtcode_old()
                 a = unit.do_sat()
                 self.results.append(a)
             except ValueError:
                 print "unit abort: nothing do more"
-        return self.results
+        en = time.time()
+        self.time.append(('total sat time:', en - st))
 
+    def strat_broad(self):
+        for unit in self.sat_units: # per SCC
+            st = time.time()
+            if unit.do_sat():
+                self.sat = True
+                return True
+            en = time.time()
+            self.time.append(('execute_time', en - st))
+        'totally unsat'
+        self.sat = False
+        return False
 
-    def make_graph(self):
+    def _make_graph(self):
         for unit in self.sat_units:
             self.mpnf_list.append(unit.make_graph())
 
-    def convert_graph_to_mdg(self):
+    def _convert_graph_to_mdg(self):
         st = time.time()
         for unit in self.sat_units:
             unit.convert_graph_to_mdg()
         en = time.time()
         self.time.append(('total_gen_mdg', en - st))
 
-    def generate_smtcode(self):
+    def _generate_smtcode(self):
         for unit in self.sat_units:
             unit.generate_smtcode()
 
-    def do_sat(self):
-        for unit in self.sat_units:
-            st = time.time()
-            if unit.do_sat():
-                self.sat = True
-                return True
-            en = time.time()
-            execute_time = en - st
-            self.time.append(('execute_time', en - st))
-        'totally unsat'
-        self.sat = False
-        return False
-
     def print_result(self):
         print '---Result---'
-        print "SAT?: ", self.sat
-        print "through: ", self.results
-        print(self.time)
+        print "SAT?   : ", self.sat
+        print "results: ", self.results
+        for tm in self.time:
+            print tm[0], "\t", tm[1]
         for unit in self.sat_units:
             unit.print_result()
         print '------------'
@@ -654,7 +704,7 @@ def satmain2(formula, opts):
 
     # FUTURE: improve LTL tree
     sat_content = SatContent(ltl_mp_pair_list, opts)
-    sat_content.all_through()
+    sat_content.strat_all_through_old()
     sat_content.print_result()
 
 

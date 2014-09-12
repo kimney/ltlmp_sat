@@ -1,0 +1,244 @@
+Genderme:ltlmp_sat taka$ ./runltlmpbench2.sh
+Hello World!, this is ltlmp benchmark test!
+----- Parsing  '(([]((loc_0) || (loc_1))) && ([]((loc_0 -> ((! loc_1))) && (loc_1 -> ((! loc_0))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP^(3*T(move)+1*T(!move&&open))<=2&&MP_(5*T(loc_0))>=1&&MP_(100*T(loc_0))<=1&&MP_(10*T(req_btn_1))>=1' -----
+sat_units: 16 [<__main__.MpnfUnit instance at 0x108e9b440>, <__main__.MpnfUnit instance at 0x108f2f248>, <__main__.MpnfUnit instance at 0x108e98ea8>, <__main__.MpnfUnit instance at 0x108efa050>, <__main__.MpnfUnit instance at 0x108efa098>, <__main__.MpnfUnit instance at 0x108efa128>, <__main__.MpnfUnit instance at 0x108efa170>, <__main__.MpnfUnit instance at 0x108efa200>, <__main__.MpnfUnit instance at 0x108e8f248>, <__main__.MpnfUnit instance at 0x108e8f908>, <__main__.MpnfUnit instance at 0x108e8f7a0>, <__main__.MpnfUnit instance at 0x108e8f950>, <__main__.MpnfUnit instance at 0x108e8fb90>, <__main__.MpnfUnit instance at 0x108e8fa28>, <__main__.MpnfUnit instance at 0x108e8f9e0>, <__main__.MpnfUnit instance at 0x108e8f170>]
+unit 0
+-- BA!
+0.0208358764648  ---- Automata construction Time 
+unit 1
+-- BA!
+0.0121560096741  ---- Automata construction Time 
+unit abort: nothing do more
+unit 2
+-- BA!
+0.00968718528748  ---- Automata construction Time 
+unit abort: nothing do more
+unit 3
+-- BA!
+0.0118861198425  ---- Automata construction Time 
+unit abort: nothing do more
+unit 4
+-- BA!
+0.00954794883728  ---- Automata construction Time 
+unit abort: nothing do more
+unit 5
+-- BA!
+0.00824499130249  ---- Automata construction Time 
+unit abort: nothing do more
+unit 6
+-- BA!
+0.00777506828308  ---- Automata construction Time 
+unit abort: nothing do more
+unit 7
+-- BA!
+0.0130469799042  ---- Automata construction Time 
+unit abort: nothing do more
+unit 8
+-- BA!
+0.0102231502533  ---- Automata construction Time 
+unit abort: nothing do more
+unit 9
+-- BA!
+0.0120329856873  ---- Automata construction Time 
+unit abort: nothing do more
+unit 10
+-- BA!
+0.0122809410095  ---- Automata construction Time 
+unit abort: nothing do more
+unit 11
+-- BA!
+0.0112547874451  ---- Automata construction Time 
+unit abort: nothing do more
+unit 12
+-- BA!
+0.00901293754578  ---- Automata construction Time 
+unit abort: nothing do more
+unit 13
+-- BA!
+0.0116708278656  ---- Automata construction Time 
+unit abort: nothing do more
+unit 14
+-- BA!
+0.0111889839172  ---- Automata construction Time 
+unit abort: nothing do more
+unit 15
+-- BA!
+0.0123980045319  ---- Automata construction Time 
+unit abort: nothing do more
+---Result---
+SAT?   :  None
+results:  [True]
+total sat time: 	5.53037405014
+	make_graph(scc_u): 	0.0339758396149
+	total gen_smt: graph->mdg->mdg(scc) 	4.10380411148
+	do_sat(total_ex_smt): 	1.09437799454
+		smt_gencode_time 	0.0233881473541
+		smt_solver_execute_time 	1.09433197975
+	make_graph(scc_u): 	0.0197551250458
+	make_graph(scc_u): 	0.0192899703979
+	make_graph(scc_u): 	0.0211870670319
+	make_graph(scc_u): 	0.0188879966736
+	make_graph(scc_u): 	0.0184280872345
+	make_graph(scc_u): 	0.0183751583099
+	make_graph(scc_u): 	0.025356054306
+	make_graph(scc_u): 	0.0203042030334
+	make_graph(scc_u): 	0.0183801651001
+	make_graph(scc_u): 	0.0185351371765
+	make_graph(scc_u): 	0.0182690620422
+	make_graph(scc_u): 	0.0179440975189
+	make_graph(scc_u): 	0.0187261104584
+	make_graph(scc_u): 	0.0191760063171
+	make_graph(scc_u): 	0.0207190513611
+------------
+None
+----- Parsing  '(([]((loc_0) || (loc_1))) && ([]((loc_0 -> ((! loc_1))) && (loc_1 -> ((! loc_0))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP^(3*T(move)+1*T(!move&&open))<=2&&MP_(5*T(loc_0))>=1&&MP_(100*T(loc_0))<=1&&MP_(10*T(req_btn_1))>=1' -----
+sat_units: 16 [<__main__.MpnfUnit instance at 0x104a4a440>, <__main__.MpnfUnit instance at 0x104ade248>, <__main__.MpnfUnit instance at 0x104a47ea8>, <__main__.MpnfUnit instance at 0x104aa9050>, <__main__.MpnfUnit instance at 0x104aa9098>, <__main__.MpnfUnit instance at 0x104aa9128>, <__main__.MpnfUnit instance at 0x104aa9170>, <__main__.MpnfUnit instance at 0x104aa9200>, <__main__.MpnfUnit instance at 0x104a3e248>, <__main__.MpnfUnit instance at 0x104a3e908>, <__main__.MpnfUnit instance at 0x104a3e7a0>, <__main__.MpnfUnit instance at 0x104a3e950>, <__main__.MpnfUnit instance at 0x104a3eb90>, <__main__.MpnfUnit instance at 0x104a3ea28>, <__main__.MpnfUnit instance at 0x104a3e9e0>, <__main__.MpnfUnit instance at 0x104a3e170>]
+unit 0
+-- TGBA!
+0.594698905945  ---- Automata construction Time 
+  -- DiGraph Construction Time:  0.0122730731964
+unit 1
+-- TGBA!
+0.018100976944  ---- Automata construction Time 
+unit abort: nothing do more
+unit 2
+-- TGBA!
+0.0229749679565  ---- Automata construction Time 
+unit abort: nothing do more
+unit 3
+-- TGBA!
+0.0204870700836  ---- Automata construction Time 
+unit abort: nothing do more
+unit 4
+-- TGBA!
+0.0224440097809  ---- Automata construction Time 
+unit abort: nothing do more
+unit 5
+-- TGBA!
+0.0221059322357  ---- Automata construction Time 
+unit abort: nothing do more
+unit 6
+-- TGBA!
+0.0221979618073  ---- Automata construction Time 
+unit abort: nothing do more
+unit 7
+-- TGBA!
+0.0211250782013  ---- Automata construction Time 
+unit abort: nothing do more
+unit 8
+-- TGBA!
+0.0222289562225  ---- Automata construction Time 
+unit abort: nothing do more
+unit 9
+-- TGBA!
+0.0221009254456  ---- Automata construction Time 
+unit abort: nothing do more
+unit 10
+-- TGBA!
+0.0215060710907  ---- Automata construction Time 
+unit abort: nothing do more
+unit 11
+-- TGBA!
+0.0230829715729  ---- Automata construction Time 
+unit abort: nothing do more
+unit 12
+-- TGBA!
+0.0163760185242  ---- Automata construction Time 
+unit abort: nothing do more
+unit 13
+-- TGBA!
+0.0210220813751  ---- Automata construction Time 
+unit abort: nothing do more
+unit 14
+-- TGBA!
+0.0235350131989  ---- Automata construction Time 
+unit abort: nothing do more
+unit 15
+-- TGBA!
+0.0246391296387  ---- Automata construction Time 
+unit abort: nothing do more
+---Result---
+SAT?   :  None
+results:  [True]
+total sat time: 	4.06227993965
+	make_graph(scc_u): 	0.612966775894
+	total gen_smt: graph->mdg->mdg(scc) 	2.58171606064
+	do_sat(total_ex_smt): 	0.449638128281
+		smt_gencode_time 	0.0231518745422
+		smt_solver_execute_time 	0.449551105499
+	make_graph(scc_u): 	0.0237669944763
+	make_graph(scc_u): 	0.0288498401642
+	make_graph(scc_u): 	0.0248639583588
+	make_graph(scc_u): 	0.0269148349762
+	make_graph(scc_u): 	0.0282709598541
+	make_graph(scc_u): 	0.0285460948944
+	make_graph(scc_u): 	0.0262529850006
+	make_graph(scc_u): 	0.0269129276276
+	make_graph(scc_u): 	0.0290739536285
+	make_graph(scc_u): 	0.0270621776581
+	make_graph(scc_u): 	0.0301539897919
+	make_graph(scc_u): 	0.0244610309601
+	make_graph(scc_u): 	0.0284969806671
+	make_graph(scc_u): 	0.0290589332581
+	make_graph(scc_u): 	0.0306310653687
+------------
+None
+----- Parsing  '(([]((loc_0) || (loc_1) || (loc_2))) && ([]((loc_0 -> ((! loc_1) && (! loc_2))) && (loc_1 -> ((! loc_0) && (! loc_2))) && (loc_2 -> ((! loc_0) && (! loc_1))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))) && ((req_btn_2 -> (<>loc_2 && (loc_2  V req_l_2)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))) && ((loc_2 && req_l_2) -> (open && (move V (loc_2 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))) && ((loc_2 && move) -> (req_btn_2 V (!req_l_2 || req_btn_2))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open) && ((loc_2 && ! req_l_2) -> !open))) && ([](((loc_0 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_1)))))) && ([](((loc_2 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)))))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP^(3*T(move)+1*T(!move&&open))<=2&&MP_(5*T(loc_0))>=1&&MP_(100*T(loc_0))<=1&&MP_(10*T(req_btn_2))>=1' -----
+sat_units: 16 [<__main__.MpnfUnit instance at 0x10827c758>, <__main__.MpnfUnit instance at 0x108367368>, <__main__.MpnfUnit instance at 0x108292518>, <__main__.MpnfUnit instance at 0x108239050>, <__main__.MpnfUnit instance at 0x1082390e0>, <__main__.MpnfUnit instance at 0x108239128>, <__main__.MpnfUnit instance at 0x1082391b8>, <__main__.MpnfUnit instance at 0x108239170>, <__main__.MpnfUnit instance at 0x1082841b8>, <__main__.MpnfUnit instance at 0x1082840e0>, <__main__.MpnfUnit instance at 0x108284290>, <__main__.MpnfUnit instance at 0x108284488>, <__main__.MpnfUnit instance at 0x108284368>, <__main__.MpnfUnit instance at 0x108284248>, <__main__.MpnfUnit instance at 0x108281b90>, <__main__.MpnfUnit instance at 0x108281a28>]
+unit 0
+-- BA!
+0.22093296051  ---- Automata construction Time 
+^CTraceback (most recent call last):
+  File "./ltlmpsat.py", line 881, in <module>
+    sat = satmain2(opts.formula, opts)
+  File "./ltlmpsat.py", line 701, in satmain2
+    sat_content.strat_all_through_old()
+  File "./ltlmpsat.py", line 647, in strat_all_through_old
+    a = unit.do_sat()
+  File "./ltlmpsat.py", line 596, in do_sat
+    if or_unit.sat():
+  File "./ltlmpsat.py", line 462, in sat
+    torf = self.execute_smt_solver()
+  File "./ltlmpsat.py", line 451, in execute_smt_solver
+    for line in smt_solver.stdout:
+KeyboardInterrupt
+^C
+^C
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ 
+
+python ltlmpsat.py -t -f '(([]((loc_0) || (loc_1) || (loc_2))) && ([]((loc_0 -> ((! loc_1) && (! loc_2))) && (loc_1 -> ((! loc_0) && (! loc_2))) && (loc_2 -> ((! loc_0) && (! loc_1))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))) && ((req_btn_2 -> (<>loc_2 && (loc_2  V req_l_2)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))) && ((loc_2 && req_l_2) -> (open && (move V (loc_2 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))) && ((loc_2 && move) -> (req_btn_2 V (!req_l_2 || req_btn_2))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open) && ((loc_2 && ! req_l_2) -> !open))) && ([](((loc_0 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_1)))))) && ([](((loc_2 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)))))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP^(3*T(move)+1*T(!move&&open))<=2&&MP_(5*T(loc_0))>=1&&MP_(100*T(loc_0))<=1&&MP_(10*T(req_btn_2))>=1'
+----- Parsing  '(([]((loc_0) || (loc_1) || (loc_2))) && ([]((loc_0 -> ((! loc_1) && (! loc_2))) && (loc_1 -> ((! loc_0) && (! loc_2))) && (loc_2 -> ((! loc_0) && (! loc_1))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))) && ((req_btn_2 -> (<>loc_2 && (loc_2  V req_l_2)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))) && ((loc_2 && req_l_2) -> (open && (move V (loc_2 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))) && ((loc_2 && move) -> (req_btn_2 V (!req_l_2 || req_btn_2))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open) && ((loc_2 && ! req_l_2) -> !open))) && ([](((loc_0 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_1)))))) && ([](((loc_2 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)))))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP^(3*T(move)+1*T(!move&&open))<=2&&MP_(5*T(loc_0))>=1&&MP_(100*T(loc_0))<=1&&MP_(10*T(req_btn_2))>=1' -----
+sat_units: 16 [<__main__.MpnfUnit instance at 0x1066bc758>, <__main__.MpnfUnit instance at 0x1067a7368>, <__main__.MpnfUnit instance at 0x1066d2518>, <__main__.MpnfUnit instance at 0x10667a050>, <__main__.MpnfUnit instance at 0x10667a0e0>, <__main__.MpnfUnit instance at 0x10667a128>, <__main__.MpnfUnit instance at 0x10667a1b8>, <__main__.MpnfUnit instance at 0x10667a170>, <__main__.MpnfUnit instance at 0x1066c41b8>, <__main__.MpnfUnit instance at 0x1066c40e0>, <__main__.MpnfUnit instance at 0x1066c4290>, <__main__.MpnfUnit instance at 0x1066c4488>, <__main__.MpnfUnit instance at 0x1066c4368>, <__main__.MpnfUnit instance at 0x1066c4248>, <__main__.MpnfUnit instance at 0x1066c1b90>, <__main__.MpnfUnit instance at 0x1066c1a28>]
+unit 0
+-- TGBA!
+14.1616911888  ---- Automata construction Time 
+  -- DiGraph Construction Time:  0.203809022903
+^CTraceback (most recent call last):
+  File "ltlmpsat.py", line 881, in <module>
+    sat = satmain2(opts.formula, opts)
+  File "ltlmpsat.py", line 701, in satmain2
+    sat_content.strat_all_through_old()
+  File "ltlmpsat.py", line 647, in strat_all_through_old
+    a = unit.do_sat()
+  File "ltlmpsat.py", line 596, in do_sat
+    if or_unit.sat():
+  File "ltlmpsat.py", line 462, in sat
+    torf = self.execute_smt_solver()
+  File "ltlmpsat.py", line 451, in execute_smt_solver
+    for line in smt_solver.stdout:
+KeyboardInterrupt
+

@@ -1,0 +1,21 @@
+----- Parsing  '(([]((loc_0) || (loc_1) || (loc_2) || (loc_3))) && ([]((loc_0 -> ((! loc_1) && (! loc_2) && (! loc_3))) && (loc_1 -> ((! loc_0) && (! loc_2) && (! loc_3))) && (loc_2 -> ((! loc_0) && (! loc_1) && (! loc_3))) && (loc_3 -> ((! loc_0) && (! loc_1) && (! loc_2))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))) && ((req_btn_2 -> (<>loc_2 && (loc_2  V req_l_2)))) && ((req_btn_3 -> (<>loc_3 && (loc_3  V req_l_3)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))) && ((loc_2 && req_l_2) -> (open && (move V (loc_2 || move)))) && ((loc_3 && req_l_3) -> (open && (move V (loc_3 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))) && ((loc_2 && move) -> (req_btn_2 V (!req_l_2 || req_btn_2))) && ((loc_3 && move) -> (req_btn_3 V (!req_l_3 || req_btn_3))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open) && ((loc_2 && ! req_l_2) -> !open) && ((loc_3 && ! req_l_3) -> !open))) && ([](((loc_0 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_1)))) && ((loc_0 && req_l_3) -> ((!loc_2 U (!loc_2 && loc_1)) && (!loc_3 U (!loc_3 && loc_2)))) && ((loc_1 && req_l_3) -> ((!loc_3 U (!loc_3 && loc_2)))))) && ([](((loc_2 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)))) && ((loc_3 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)) && (!loc_1 U (!loc_1 && loc_2)))) && ((loc_3 && req_l_1) -> ((!loc_1 U (!loc_1 && loc_2)))))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP_(5*T(loc_0Uloc_1))>=1' -----
+sat_units: 2 [<__main__.MpnfUnit instance at 0x10a4bc758>, <__main__.MpnfUnit instance at 0x10a4bc7a0>]
+unit 0
+1410478707.99  ---- Automata construction Time 
+unit 1
+1410479188.28  ---- Automata construction Time 
+unit abort: nothing do more
+---Result---
+SAT?   :  None
+results:  [True]
+	make_graph: 	12.5066130161
+	total: graph->mdg->mdg(scc) 	131.757478952
+		smt_gencode_time 	34.7886621952
+		smt_solver_execute_time 	344.302513123
+		smt_gencode_time 	0.000313997268677
+		smt_gencode_time 	0.000268936157227
+		smt_gencode_time 	0.000267028808594
+		smt_gencode_time 	0.000274181365967
+	make_graph: 	0.0592648983002
+------------
+None

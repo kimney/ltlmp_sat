@@ -1,0 +1,316 @@
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ ./runltlmpbench.sh 
+Hello World!, this is ltlmp benchmark test!
+sharpnotfound!
+----- Parsing  '(([]((loc_0) || (loc_1))) && ([]((loc_0 -> ((! loc_1))) && (loc_1 -> ((! loc_0))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP_(5*T(loc_0Uloc_1))>=1' -----
+sat_units: 2 [<__main__.MpnfUnit instance at 0x10c01e3b0>, <__main__.MpnfUnit instance at 0x10c01e3f8>]
+unit 0
+-- BA!
+0.0205471515656  ---- Automata construction Time 
+unit 1
+-- BA!
+0.0319859981537  ---- Automata construction Time 
+unit abort: nothing do more
+---Result---
+SAT?   :  None
+results:  [True]
+	make_graph: 	0.0638840198517
+	total: graph->mdg->mdg(scc) 	0.724918842316
+		smt_gencode_time 	0.0100510120392
+		smt_solver_execute_time 	0.0723688602448
+		smt_gencode_time 	0.000485897064209
+	make_graph: 	0.0641050338745
+------------
+None
+----- Parsing  '(([]((loc_0) || (loc_1))) && ([]((loc_0 -> ((! loc_1))) && (loc_1 -> ((! loc_0))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP_(5*T(loc_0Uloc_1))>=1' -----
+sat_units: 2 [<__main__.MpnfUnit instance at 0x10f2713b0>, <__main__.MpnfUnit instance at 0x10f2713f8>]
+unit 0
+-- TGBA!
+1.45969796181  ---- Automata construction Time 
+  -- DiGraph Construction Time:  0.0240511894226
+unit 1
+-- TGBA!
+0.0236678123474  ---- Automata construction Time 
+unit abort: nothing do more
+---Result---
+SAT?   :  None
+results:  [True]
+	make_graph: 	1.50691914558
+	total: graph->mdg->mdg(scc) 	0.271885871887
+		smt_gencode_time 	0.00630807876587
+		smt_solver_execute_time 	0.044135093689
+		smt_gencode_time 	0.000545024871826
+		smt_gencode_time 	0.000507116317749
+		smt_gencode_time 	0.000302791595459
+	make_graph: 	0.0323920249939
+------------
+None
+sharpnotfound!
+----- Parsing  '(([]((loc_0) || (loc_1) || (loc_2))) && ([]((loc_0 -> ((! loc_1) && (! loc_2))) && (loc_1 -> ((! loc_0) && (! loc_2))) && (loc_2 -> ((! loc_0) && (! loc_1))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))) && ((req_btn_2 -> (<>loc_2 && (loc_2  V req_l_2)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))) && ((loc_2 && req_l_2) -> (open && (move V (loc_2 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))) && ((loc_2 && move) -> (req_btn_2 V (!req_l_2 || req_btn_2))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open) && ((loc_2 && ! req_l_2) -> !open))) && ([](((loc_0 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_1)))))) && ([](((loc_2 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)))))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP_(5*T(loc_0Uloc_1))>=1' -----
+sat_units: 2 [<__main__.MpnfUnit instance at 0x10f43b9e0>, <__main__.MpnfUnit instance at 0x10f43ba28>]
+unit 0
+-- BA!
+0.431290149689  ---- Automata construction Time 
+Error: [yicesinput, line(186611), column(350), position(6767145)]: Expression expected.
+unit 1
+-- BA!
+0.0151760578156  ---- Automata construction Time 
+unit abort: nothing do more
+---Result---
+SAT?   :  None
+results:  [True]
+	make_graph: 	0.762383937836
+	total: graph->mdg->mdg(scc) 	7.13433599472
+		smt_gencode_time 	0.127118825912
+		smt_solver_execute_time 	2.70516514778
+		smt_gencode_time 	0.000345230102539
+		smt_gencode_time 	0.000272989273071
+	make_graph: 	0.0199298858643
+------------
+None
+----- Parsing  '(([]((loc_0) || (loc_1) || (loc_2))) && ([]((loc_0 -> ((! loc_1) && (! loc_2))) && (loc_1 -> ((! loc_0) && (! loc_2))) && (loc_2 -> ((! loc_0) && (! loc_1))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))) && ((req_btn_2 -> (<>loc_2 && (loc_2  V req_l_2)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))) && ((loc_2 && req_l_2) -> (open && (move V (loc_2 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))) && ((loc_2 && move) -> (req_btn_2 V (!req_l_2 || req_btn_2))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open) && ((loc_2 && ! req_l_2) -> !open))) && ([](((loc_0 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_1)))))) && ([](((loc_2 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)))))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP_(5*T(loc_0Uloc_1))>=1' -----
+sat_units: 2 [<__main__.MpnfUnit instance at 0x108bfb9e0>, <__main__.MpnfUnit instance at 0x108bfba28>]
+unit 0
+-- TGBA!
+12.6464040279  ---- Automata construction Time 
+  -- DiGraph Construction Time:  0.222849845886
+unit 1
+-- TGBA!
+0.0218229293823  ---- Automata construction Time 
+unit abort: nothing do more
+---Result---
+SAT?   :  None
+results:  [True]
+	make_graph: 	12.8741931915
+	total: graph->mdg->mdg(scc) 	2.27818012238
+		smt_gencode_time 	0.0808548927307
+		smt_solver_execute_time 	1.08977007866
+		smt_gencode_time 	0.000527858734131
+		smt_gencode_time 	0.000473976135254
+		smt_gencode_time 	0.000466823577881
+		smt_gencode_time 	0.000468969345093
+		smt_gencode_time 	0.000290155410767
+		smt_gencode_time 	0.000276803970337
+	make_graph: 	0.0278868675232
+------------
+None
+sharpnotfound!
+----- Parsing  '(([]((loc_0) || (loc_1) || (loc_2) || (loc_3))) && ([]((loc_0 -> ((! loc_1) && (! loc_2) && (! loc_3))) && (loc_1 -> ((! loc_0) && (! loc_2) && (! loc_3))) && (loc_2 -> ((! loc_0) && (! loc_1) && (! loc_3))) && (loc_3 -> ((! loc_0) && (! loc_1) && (! loc_2))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))) && ((req_btn_2 -> (<>loc_2 && (loc_2  V req_l_2)))) && ((req_btn_3 -> (<>loc_3 && (loc_3  V req_l_3)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))) && ((loc_2 && req_l_2) -> (open && (move V (loc_2 || move)))) && ((loc_3 && req_l_3) -> (open && (move V (loc_3 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))) && ((loc_2 && move) -> (req_btn_2 V (!req_l_2 || req_btn_2))) && ((loc_3 && move) -> (req_btn_3 V (!req_l_3 || req_btn_3))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open) && ((loc_2 && ! req_l_2) -> !open) && ((loc_3 && ! req_l_3) -> !open))) && ([](((loc_0 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_1)))) && ((loc_0 && req_l_3) -> ((!loc_2 U (!loc_2 && loc_1)) && (!loc_3 U (!loc_3 && loc_2)))) && ((loc_1 && req_l_3) -> ((!loc_3 U (!loc_3 && loc_2)))))) && ([](((loc_2 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)))) && ((loc_3 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)) && (!loc_1 U (!loc_1 && loc_2)))) && ((loc_3 && req_l_1) -> ((!loc_1 U (!loc_1 && loc_2)))))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP_(5*T(loc_0Uloc_1))>=1' -----
+sat_units: 2 [<__main__.MpnfUnit instance at 0x107e40710>, <__main__.MpnfUnit instance at 0x107e40758>]
+unit 0
+-- BA!
+9.56617593765  ---- Automata construction Time 
+^CTraceback (most recent call last):
+  File "./ltlmpsat.py", line 873, in <module>
+    opts.tgba = True
+  File "./ltlmpsat.py", line 693, in satmain2
+    ltlmp_root = parse_input(formula)
+  File "./ltlmpsat.py", line 641, in strat_all_through_old
+    for unit in self.sat_units:
+  File "./ltlmpsat.py", line 595, in do_sat
+    for or_unit in self.sat_or_list:
+  File "./ltlmpsat.py", line 462, in sat
+    torf = self.execute_smt_solver()
+  File "./ltlmpsat.py", line 451, in execute_smt_solver
+    for line in smt_solver.stdout:
+KeyboardInterrupt
+^C
+Genderme:ltlmp_sat taka$ 
+Genderme:ltlmp_sat taka$ ./runltlmpbench.sh 
+Hello World!, this is ltlmp benchmark test!
+sharpnotfound!
+----- Parsing  '(([]((loc_0) || (loc_1))) && ([]((loc_0 -> ((! loc_1))) && (loc_1 -> ((! loc_0))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP_(5*T(loc_0Uloc_1))>=1' -----
+sat_units: 2 [<__main__.MpnfUnit instance at 0x110a30488>, <__main__.MpnfUnit instance at 0x110a304d0>]
+unit 0
+-- BA!
+0.0496139526367  ---- Automata construction Time 
+unit 1
+-- BA!
+0.0111489295959  ---- Automata construction Time 
+unit abort: nothing do more
+---Result---
+SAT?   :  None
+results:  [True]
+total sat time: 	0.58827996254
+	make_graph(scc_u): 	0.0709309577942
+	total gen_smt: graph->mdg->mdg(scc) 	0.438839912415
+	do_sat(total_ex_smt): 	0.0605690479279
+		smt_gencode_time 	0.0076150894165
+		smt_solver_execute_time 	0.0605490207672
+		smt_gencode_time 	0.000433921813965
+	make_graph(scc_u): 	0.0175521373749
+------------
+None
+----- Parsing  '(([]((loc_0) || (loc_1))) && ([]((loc_0 -> ((! loc_1))) && (loc_1 -> ((! loc_0))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP_(5*T(loc_0Uloc_1))>=1' -----
+sat_units: 2 [<__main__.MpnfUnit instance at 0x10ed2b488>, <__main__.MpnfUnit instance at 0x10ed2b4d0>]
+unit 0
+-- TGBA!
+1.05469107628  ---- Automata construction Time 
+  -- DiGraph Construction Time:  0.0143790245056
+unit 1
+-- TGBA!
+0.0237050056458  ---- Automata construction Time 
+unit abort: nothing do more
+---Result---
+SAT?   :  None
+results:  [True]
+total sat time: 	1.37072896957
+	make_graph(scc_u): 	1.07419395447
+	total gen_smt: graph->mdg->mdg(scc) 	0.217575073242
+	do_sat(total_ex_smt): 	0.0490438938141
+		smt_gencode_time 	0.00577998161316
+		smt_solver_execute_time 	0.049026966095
+		smt_gencode_time 	0.000513076782227
+		smt_gencode_time 	0.000503063201904
+		smt_gencode_time 	0.000302076339722
+	make_graph(scc_u): 	0.0294020175934
+------------
+None
+sharpnotfound!
+----- Parsing  '(([]((loc_0) || (loc_1) || (loc_2))) && ([]((loc_0 -> ((! loc_1) && (! loc_2))) && (loc_1 -> ((! loc_0) && (! loc_2))) && (loc_2 -> ((! loc_0) && (! loc_1))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))) && ((req_btn_2 -> (<>loc_2 && (loc_2  V req_l_2)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))) && ((loc_2 && req_l_2) -> (open && (move V (loc_2 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))) && ((loc_2 && move) -> (req_btn_2 V (!req_l_2 || req_btn_2))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open) && ((loc_2 && ! req_l_2) -> !open))) && ([](((loc_0 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_1)))))) && ([](((loc_2 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)))))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP_(5*T(loc_0Uloc_1))>=1' -----
+sat_units: 2 [<__main__.MpnfUnit instance at 0x102ea7ab8>, <__main__.MpnfUnit instance at 0x102ea7b00>]
+unit 0
+-- BA!
+0.336843967438  ---- Automata construction Time 
+unit 1
+-- BA!
+0.0172791481018  ---- Automata construction Time 
+unit abort: nothing do more
+---Result---
+SAT?   :  None
+results:  [True]
+total sat time: 	10.1073489189
+	make_graph(scc_u): 	0.59206199646
+	total gen_smt: graph->mdg->mdg(scc) 	6.74669194221
+	do_sat(total_ex_smt): 	2.74407505989
+		smt_gencode_time 	0.171819925308
+		smt_solver_execute_time 	2.74404621124
+		smt_gencode_time 	0.000320911407471
+		smt_gencode_time 	0.000286817550659
+	make_graph(scc_u): 	0.0227279663086
+------------
+None
+----- Parsing  '(([]((loc_0) || (loc_1) || (loc_2))) && ([]((loc_0 -> ((! loc_1) && (! loc_2))) && (loc_1 -> ((! loc_0) && (! loc_2))) && (loc_2 -> ((! loc_0) && (! loc_1))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))) && ((req_btn_2 -> (<>loc_2 && (loc_2  V req_l_2)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))) && ((loc_2 && req_l_2) -> (open && (move V (loc_2 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))) && ((loc_2 && move) -> (req_btn_2 V (!req_l_2 || req_btn_2))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open) && ((loc_2 && ! req_l_2) -> !open))) && ([](((loc_0 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_1)))))) && ([](((loc_2 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)))))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP_(5*T(loc_0Uloc_1))>=1' -----
+sat_units: 2 [<__main__.MpnfUnit instance at 0x10cdc0ab8>, <__main__.MpnfUnit instance at 0x10cdc0b00>]
+unit 0
+-- TGBA!
+12.7469069958  ---- Automata construction Time 
+  -- DiGraph Construction Time:  0.196625947952
+unit 1
+-- TGBA!
+0.0159680843353  ---- Automata construction Time 
+unit abort: nothing do more
+---Result---
+SAT?   :  None
+results:  [True]
+total sat time: 	16.3251469135
+	make_graph(scc_u): 	12.9482600689
+	total gen_smt: graph->mdg->mdg(scc) 	2.33557391167
+	do_sat(total_ex_smt): 	1.01508903503
+		smt_gencode_time 	0.0746200084686
+		smt_solver_execute_time 	1.01507115364
+		smt_gencode_time 	0.000307083129883
+		smt_gencode_time 	0.000282049179077
+		smt_gencode_time 	0.000279903411865
+		smt_gencode_time 	0.000315189361572
+		smt_gencode_time 	0.000169992446899
+		smt_gencode_time 	0.000325918197632
+	make_graph(scc_u): 	0.0206758975983
+------------
+None
+sharpnotfound!
+----- Parsing  '(([]((loc_0) || (loc_1) || (loc_2) || (loc_3))) && ([]((loc_0 -> ((! loc_1) && (! loc_2) && (! loc_3))) && (loc_1 -> ((! loc_0) && (! loc_2) && (! loc_3))) && (loc_2 -> ((! loc_0) && (! loc_1) && (! loc_3))) && (loc_3 -> ((! loc_0) && (! loc_1) && (! loc_2))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))) && ((req_btn_2 -> (<>loc_2 && (loc_2  V req_l_2)))) && ((req_btn_3 -> (<>loc_3 && (loc_3  V req_l_3)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))) && ((loc_2 && req_l_2) -> (open && (move V (loc_2 || move)))) && ((loc_3 && req_l_3) -> (open && (move V (loc_3 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))) && ((loc_2 && move) -> (req_btn_2 V (!req_l_2 || req_btn_2))) && ((loc_3 && move) -> (req_btn_3 V (!req_l_3 || req_btn_3))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open) && ((loc_2 && ! req_l_2) -> !open) && ((loc_3 && ! req_l_3) -> !open))) && ([](((loc_0 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_1)))) && ((loc_0 && req_l_3) -> ((!loc_2 U (!loc_2 && loc_1)) && (!loc_3 U (!loc_3 && loc_2)))) && ((loc_1 && req_l_3) -> ((!loc_3 U (!loc_3 && loc_2)))))) && ([](((loc_2 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)))) && ((loc_3 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)) && (!loc_1 U (!loc_1 && loc_2)))) && ((loc_3 && req_l_1) -> ((!loc_1 U (!loc_1 && loc_2)))))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP_(5*T(loc_0Uloc_1))>=1' -----
+sat_units: 2 [<__main__.MpnfUnit instance at 0x103f917e8>, <__main__.MpnfUnit instance at 0x103f91830>]
+unit 0
+-- BA!
+8.8981730938  ---- Automata construction Time 
+^CTraceback (most recent call last):
+  File "./ltlmpsat.py", line 881, in <module>
+    sat = satmain2(opts.formula, opts)
+  File "./ltlmpsat.py", line 701, in satmain2
+    sat_content.strat_all_through_old()
+  File "./ltlmpsat.py", line 647, in strat_all_through_old
+    a = unit.do_sat()
+  File "./ltlmpsat.py", line 596, in do_sat
+    if or_unit.sat():
+  File "./ltlmpsat.py", line 462, in sat
+    torf = self.execute_smt_solver()
+  File "./ltlmpsat.py", line 451, in execute_smt_solver
+    for line in smt_solver.stdout:
+KeyboardInterrupt
+----- Parsing  '(([]((loc_0) || (loc_1) || (loc_2) || (loc_3))) && ([]((loc_0 -> ((! loc_1) && (! loc_2) && (! loc_3))) && (loc_1 -> ((! loc_0) && (! loc_2) && (! loc_3))) && (loc_2 -> ((! loc_0) && (! loc_1) && (! loc_3))) && (loc_3 -> ((! loc_0) && (! loc_1) && (! loc_2))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))) && ((req_btn_2 -> (<>loc_2 && (loc_2  V req_l_2)))) && ((req_btn_3 -> (<>loc_3 && (loc_3  V req_l_3)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))) && ((loc_2 && req_l_2) -> (open && (move V (loc_2 || move)))) && ((loc_3 && req_l_3) -> (open && (move V (loc_3 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))) && ((loc_2 && move) -> (req_btn_2 V (!req_l_2 || req_btn_2))) && ((loc_3 && move) -> (req_btn_3 V (!req_l_3 || req_btn_3))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open) && ((loc_2 && ! req_l_2) -> !open) && ((loc_3 && ! req_l_3) -> !open))) && ([](((loc_0 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_1)))) && ((loc_0 && req_l_3) -> ((!loc_2 U (!loc_2 && loc_1)) && (!loc_3 U (!loc_3 && loc_2)))) && ((loc_1 && req_l_3) -> ((!loc_3 U (!loc_3 && loc_2)))))) && ([](((loc_2 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)))) && ((loc_3 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)) && (!loc_1 U (!loc_1 && loc_2)))) && ((loc_3 && req_l_1) -> ((!loc_1 U (!loc_1 && loc_2)))))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP_(5*T(loc_0Uloc_1))>=1' -----
+sat_units: 2 [<__main__.MpnfUnit instance at 0x1056bf7e8>, <__main__.MpnfUnit instance at 0x1056bf830>]
+unit 0
+-- TGBA!
+222.022096872  ---- Automata construction Time 
+  -- DiGraph Construction Time:  3.04452395439
+unit 1
+-- TGBA!
+0.0525031089783  ---- Automata construction Time 
+unit abort: nothing do more
+---Result---
+SAT?   :  None
+results:  [True]
+total sat time: 	381.357275009
+	make_graph(scc_u): 	225.074241161
+	total gen_smt: graph->mdg->mdg(scc) 	33.8086180687
+	do_sat(total_ex_smt): 	122.237465858
+		smt_gencode_time 	3.97255206108
+		smt_solver_execute_time 	122.237386942
+		smt_gencode_time 	0.000611066818237
+		smt_gencode_time 	0.000614166259766
+		smt_gencode_time 	0.000596046447754
+		smt_gencode_time 	0.000607967376709
+		smt_gencode_time 	0.000597953796387
+		smt_gencode_time 	0.000598192214966
+		smt_gencode_time 	0.000600099563599
+		smt_gencode_time 	0.000593900680542
+		smt_gencode_time 	0.000594854354858
+		smt_gencode_time 	0.000592947006226
+		smt_gencode_time 	0.000481128692627
+		smt_gencode_time 	0.000231981277466
+		smt_gencode_time 	0.000396966934204
+		smt_gencode_time 	0.00037693977356
+		smt_gencode_time 	0.000377893447876
+		smt_gencode_time 	0.00039005279541
+	make_graph(scc_u): 	0.0614349842072
+------------
+None
+sharpnotfound!
+----- Parsing  '(([]((loc_0) || (loc_1) || (loc_2) || (loc_3) || (loc_4))) && ([]((loc_0 -> ((! loc_1) && (! loc_2) && (! loc_3) && (! loc_4))) && (loc_1 -> ((! loc_0) && (! loc_2) && (! loc_3) && (! loc_4))) && (loc_2 -> ((! loc_0) && (! loc_1) && (! loc_3) && (! loc_4))) && (loc_3 -> ((! loc_0) && (! loc_1) && (! loc_2) && (! loc_4))) && (loc_4 -> ((! loc_0) && (! loc_1) && (! loc_2) && (! loc_3))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))) && ((req_btn_2 -> (<>loc_2 && (loc_2  V req_l_2)))) && ((req_btn_3 -> (<>loc_3 && (loc_3  V req_l_3)))) && ((req_btn_4 -> (<>loc_4 && (loc_4  V req_l_4)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))) && ((loc_2 && req_l_2) -> (open && (move V (loc_2 || move)))) && ((loc_3 && req_l_3) -> (open && (move V (loc_3 || move)))) && ((loc_4 && req_l_4) -> (open && (move V (loc_4 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))) && ((loc_2 && move) -> (req_btn_2 V (!req_l_2 || req_btn_2))) && ((loc_3 && move) -> (req_btn_3 V (!req_l_3 || req_btn_3))) && ((loc_4 && move) -> (req_btn_4 V (!req_l_4 || req_btn_4))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open) && ((loc_2 && ! req_l_2) -> !open) && ((loc_3 && ! req_l_3) -> !open) && ((loc_4 && ! req_l_4) -> !open))) && ([](((loc_0 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_1)))) && ((loc_0 && req_l_3) -> ((!loc_2 U (!loc_2 && loc_1)) && (!loc_3 U (!loc_3 && loc_2)))) && ((loc_0 && req_l_4) -> ((!loc_2 U (!loc_2 && loc_1)) && (!loc_3 U (!loc_3 && loc_2)) && (!loc_4 U (!loc_4 && loc_3)))) && ((loc_1 && req_l_3) -> ((!loc_3 U (!loc_3 && loc_2)))) && ((loc_1 && req_l_4) -> ((!loc_3 U (!loc_3 && loc_2)) && (!loc_4 U (!loc_4 && loc_3)))) && ((loc_2 && req_l_4) -> ((!loc_4 U (!loc_4 && loc_3)))))) && ([](((loc_2 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)))) && ((loc_3 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)) && (!loc_1 U (!loc_1 && loc_2)))) && ((loc_4 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)) && (!loc_1 U (!loc_1 && loc_2)) && (!loc_2 U (!loc_2 && loc_3)))) && ((loc_3 && req_l_1) -> ((!loc_1 U (!loc_1 && loc_2)))) && ((loc_4 && req_l_1) -> ((!loc_1 U (!loc_1 && loc_2)) && (!loc_2 U (!loc_2 && loc_3)))) && ((loc_4 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_3)))))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP_(5*T(loc_0Uloc_1))>=1' -----
+sat_units: 2 [<__main__.MpnfUnit instance at 0x10383df38>, <__main__.MpnfUnit instance at 0x10383df80>]
+unit 0
+-- BA!
+^CTraceback (most recent call last):
+  File "./ltlmpsat.py", line 881, in <module>
+    sat = satmain2(opts.formula, opts)
+  File "./ltlmpsat.py", line 701, in satmain2
+    sat_content.strat_all_through_old()
+  File "./ltlmpsat.py", line 645, in strat_all_through_old
+    unit.make_graph()
+  File "./ltlmpsat.py", line 488, in make_graph
+    self.graph = self._make_graph_by_opts()
+  File "./ltlmpsat.py", line 518, in _make_graph_by_opts
+    graph = gg.nvc2graph(out, time.time(), self.opts)
+  File "/Users/taka/Dropbox/code/ltlmp_sat/generate_graph.py", line 81, in nvc2graph
+    for line in nvc_input:
+KeyboardInterrupt
+----- Parsing  '(([]((loc_0) || (loc_1) || (loc_2) || (loc_3) || (loc_4))) && ([]((loc_0 -> ((! loc_1) && (! loc_2) && (! loc_3) && (! loc_4))) && (loc_1 -> ((! loc_0) && (! loc_2) && (! loc_3) && (! loc_4))) && (loc_2 -> ((! loc_0) && (! loc_1) && (! loc_3) && (! loc_4))) && (loc_3 -> ((! loc_0) && (! loc_1) && (! loc_2) && (! loc_4))) && (loc_4 -> ((! loc_0) && (! loc_1) && (! loc_2) && (! loc_3))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))) && ((req_btn_2 -> (<>loc_2 && (loc_2  V req_l_2)))) && ((req_btn_3 -> (<>loc_3 && (loc_3  V req_l_3)))) && ((req_btn_4 -> (<>loc_4 && (loc_4  V req_l_4)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))) && ((loc_2 && req_l_2) -> (open && (move V (loc_2 || move)))) && ((loc_3 && req_l_3) -> (open && (move V (loc_3 || move)))) && ((loc_4 && req_l_4) -> (open && (move V (loc_4 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))) && ((loc_2 && move) -> (req_btn_2 V (!req_l_2 || req_btn_2))) && ((loc_3 && move) -> (req_btn_3 V (!req_l_3 || req_btn_3))) && ((loc_4 && move) -> (req_btn_4 V (!req_l_4 || req_btn_4))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open) && ((loc_2 && ! req_l_2) -> !open) && ((loc_3 && ! req_l_3) -> !open) && ((loc_4 && ! req_l_4) -> !open))) && ([](((loc_0 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_1)))) && ((loc_0 && req_l_3) -> ((!loc_2 U (!loc_2 && loc_1)) && (!loc_3 U (!loc_3 && loc_2)))) && ((loc_0 && req_l_4) -> ((!loc_2 U (!loc_2 && loc_1)) && (!loc_3 U (!loc_3 && loc_2)) && (!loc_4 U (!loc_4 && loc_3)))) && ((loc_1 && req_l_3) -> ((!loc_3 U (!loc_3 && loc_2)))) && ((loc_1 && req_l_4) -> ((!loc_3 U (!loc_3 && loc_2)) && (!loc_4 U (!loc_4 && loc_3)))) && ((loc_2 && req_l_4) -> ((!loc_4 U (!loc_4 && loc_3)))))) && ([](((loc_2 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)))) && ((loc_3 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)) && (!loc_1 U (!loc_1 && loc_2)))) && ((loc_4 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)) && (!loc_1 U (!loc_1 && loc_2)) && (!loc_2 U (!loc_2 && loc_3)))) && ((loc_3 && req_l_1) -> ((!loc_1 U (!loc_1 && loc_2)))) && ((loc_4 && req_l_1) -> ((!loc_1 U (!loc_1 && loc_2)) && (!loc_2 U (!loc_2 && loc_3)))) && ((loc_4 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_3)))))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP_(5*T(loc_0Uloc_1))>=1' -----
+sat_units: 2 [<__main__.MpnfUnit instance at 0x10197df38>, <__main__.MpnfUnit instance at 0x10197df80>]
+unit 0
+-- TGBA!
+^CTraceback (most recent call last):
+  File "./ltlmpsat.py", line 881, in <module>
+    sat = satmain2(opts.formula, opts)
+  File "./ltlmpsat.py", line 701, in satmain2
+    sat_content.strat_all_through_old()
+  File "./ltlmpsat.py", line 645, in strat_all_through_old
+    unit.make_graph()
+  File "./ltlmpsat.py", line 488, in make_graph
+    self.graph = self._make_graph_by_opts()
+  File "./ltlmpsat.py", line 507, in _make_graph_by_opts
+    graph = gg.tgba2graph(out, time.time(), self.opts)
+  File "/Users/taka/Dropbox/code/ltlmp_sat/generate_graph.py", line 13, in tgba2graph
+    for line in tgba_input:
+KeyboardInterrupt

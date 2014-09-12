@@ -13,4 +13,4 @@ do
 	else
 		echo $line
 	fi
-done < "./bench/ltlmp_bench"
+done < "./bench/ltlmp_bench_heavy"

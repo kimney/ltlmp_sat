@@ -218,7 +218,7 @@ if __name__ == '__main__':
         graph.add_node(a)
         graph.add_node(b)
         graph.add_edge(a,b,trainsitionLabel=c)
-    SCC = nx.strongly_connected_component_subgraphs(graph)
+SCC = nx.strongly_connected_component_subgraphs(graph)
     #nx.draw(graph)
     nx.draw(SCC[0])
     plt.show()

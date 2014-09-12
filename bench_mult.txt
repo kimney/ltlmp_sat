@@ -1,0 +1,274 @@
+行頭に#のついている行は，今回の実験とは無関係です
+
+# elevator-2
+--------------------- Round ---------------------------
+----- Parsing  '(([]((loc_0) || (loc_1))) && ([]((loc_0 -> ((! loc_1))) && (loc_1 -> ((! loc_0))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP^(3*T(move)+1*T(!move&&open))<=2&&MP_(5*T(loc_0))>=1&&MP_(100*T(loc_0))<=1&&MP_(10*T(req_btn_1))>=1' -----
+sat_units: 16 [<__main__.MpnfUnit instance at 0x104a075a8>, <__main__.MpnfUnit instance at 0x104b03200>, <__main__.MpnfUnit instance at 0x104a03e60>, <__main__.MpnfUnit instance at 0x104ace128>, <__main__.MpnfUnit instance at 0x104ace1b8>, <__main__.MpnfUnit instance at 0x104ace200>, <__main__.MpnfUnit instance at 0x104ace290>, <__main__.MpnfUnit instance at 0x104ace248>, <__main__.MpnfUnit instance at 0x104aba1b8>, <__main__.MpnfUnit instance at 0x104aba7e8>, <__main__.MpnfUnit instance at 0x104aba710>, <__main__.MpnfUnit instance at 0x104aba878>, <__main__.MpnfUnit instance at 0x104abaa70>, <__main__.MpnfUnit instance at 0x104aba998>, <__main__.MpnfUnit instance at 0x104aba8c0>, <__main__.MpnfUnit instance at 0x104aba0e0>]
+unit 0
+-- BA!
+0.0220601558685  ---- Automata construction Time 
+			 scc time: 0.0116138458252
+unit 1
+-- BA!
+0.0156860351562  ---- Automata construction Time 
+unit abort: nothing do more
+unit 2
+-- BA!
+0.0137240886688  ---- Automata construction Time 
+unit abort: nothing do more
+unit 3
+-- BA!
+0.015016078949  ---- Automata construction Time 
+unit abort: nothing do more
+unit 4
+-- BA!
+0.0151619911194  ---- Automata construction Time 
+unit abort: nothing do more
+unit 5
+-- BA!
+0.0148401260376  ---- Automata construction Time 
+unit abort: nothing do more
+unit 6
+-- BA!
+0.0137941837311  ---- Automata construction Time 
+unit abort: nothing do more
+unit 7
+-- BA!
+0.0131301879883  ---- Automata construction Time 
+unit abort: nothing do more
+unit 8
+-- BA!
+0.0180640220642  ---- Automata construction Time 
+unit abort: nothing do more
+unit 9
+-- BA!
+0.0140011310577  ---- Automata construction Time 
+unit abort: nothing do more
+unit 10
+-- BA!
+0.0130259990692  ---- Automata construction Time 
+unit abort: nothing do more
+unit 11
+-- BA!
+0.0129449367523  ---- Automata construction Time 
+unit abort: nothing do more
+unit 12
+-- BA!
+0.0108292102814  ---- Automata construction Time 
+unit abort: nothing do more
+unit 13
+-- BA!
+0.0149059295654  ---- Automata construction Time 
+unit abort: nothing do more
+unit 14
+-- BA!
+0.0133800506592  ---- Automata construction Time 
+unit abort: nothing do more
+unit 15
+-- BA!
+0.0146799087524  ---- Automata construction Time 
+unit abort: nothing do more
+---Result---
+SAT?   :  None
+results:  [True]
+total sat time: 	6.83566999435
+	make_graph(scc_u): 	0.0404889583588
+	total gen_smt: graph->mdg->mdg(scc) 	4.75614595413
+	do_sat(total_ex_smt): 	1.69367909431
+		g_nodes 	23
+		g_edges 	158
+		mdg_nodes 	23
+		mdg_edges 	610
+		smt_gencode_time 	0.028923034668
+		smt_solver_execute_time 	1.6936519146
+	make_graph(scc_u): 	0.0234980583191
+	make_graph(scc_u): 	0.0207591056824
+	make_graph(scc_u): 	0.0251939296722
+	make_graph(scc_u): 	0.0241780281067
+	make_graph(scc_u): 	0.0236868858337
+	make_graph(scc_u): 	0.0219030380249
+	make_graph(scc_u): 	0.0211310386658
+	make_graph(scc_u): 	0.0253090858459
+	make_graph(scc_u): 	0.0228400230408
+	make_graph(scc_u): 	0.0231170654297
+	make_graph(scc_u): 	0.0242879390717
+	make_graph(scc_u): 	0.0194499492645
+	make_graph(scc_u): 	0.0234470367432
+	make_graph(scc_u): 	0.0217487812042
+	make_graph(scc_u): 	0.0227479934692
+------------
+None
+----- Parsing  '(([]((loc_0) || (loc_1))) && ([]((loc_0 -> ((! loc_1))) && (loc_1 -> ((! loc_0))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP^(3*T(move)+1*T(!move&&open))<=2&&MP_(5*T(loc_0))>=1&&MP_(100*T(loc_0))<=1&&MP_(10*T(req_btn_1))>=1' -----
+sat_units: 16 [<__main__.MpnfUnit instance at 0x10ce795a8>, <__main__.MpnfUnit instance at 0x10cf75200>, <__main__.MpnfUnit instance at 0x10ce75e60>, <__main__.MpnfUnit instance at 0x10cf40128>, <__main__.MpnfUnit instance at 0x10cf401b8>, <__main__.MpnfUnit instance at 0x10cf40200>, <__main__.MpnfUnit instance at 0x10cf40290>, <__main__.MpnfUnit instance at 0x10cf40248>, <__main__.MpnfUnit instance at 0x10cf2c1b8>, <__main__.MpnfUnit instance at 0x10cf2c7e8>, <__main__.MpnfUnit instance at 0x10cf2c710>, <__main__.MpnfUnit instance at 0x10cf2c878>, <__main__.MpnfUnit instance at 0x10cf2ca70>, <__main__.MpnfUnit instance at 0x10cf2c998>, <__main__.MpnfUnit instance at 0x10cf2c8c0>, <__main__.MpnfUnit instance at 0x10cf2c0e0>]
+unit 0
+-- TGBA!
+0.744343996048  ---- Automata construction Time 
+  -- DiGraph Construction Time:  0.0142991542816
+			 scc time: 0.0134348869324
+unit 1
+-- TGBA!
+0.0290818214417  ---- Automata construction Time 
+unit abort: nothing do more
+unit 2
+-- TGBA!
+0.0228688716888  ---- Automata construction Time 
+unit abort: nothing do more
+unit 3
+-- TGBA!
+0.0289459228516  ---- Automata construction Time 
+unit abort: nothing do more
+unit 4
+-- TGBA!
+0.0239260196686  ---- Automata construction Time 
+unit abort: nothing do more
+unit 5
+-- TGBA!
+0.0238690376282  ---- Automata construction Time 
+unit abort: nothing do more
+unit 6
+-- TGBA!
+0.0272541046143  ---- Automata construction Time 
+unit abort: nothing do more
+unit 7
+-- TGBA!
+0.0289499759674  ---- Automata construction Time 
+unit abort: nothing do more
+unit 8
+-- TGBA!
+0.0260558128357  ---- Automata construction Time 
+unit abort: nothing do more
+unit 9
+-- TGBA!
+0.028382062912  ---- Automata construction Time 
+unit abort: nothing do more
+unit 10
+-- TGBA!
+0.0243699550629  ---- Automata construction Time 
+unit abort: nothing do more
+unit 11
+-- TGBA!
+0.0254981517792  ---- Automata construction Time 
+unit abort: nothing do more
+unit 12
+-- TGBA!
+0.0282061100006  ---- Automata construction Time 
+unit abort: nothing do more
+unit 13
+-- TGBA!
+0.025918006897  ---- Automata construction Time 
+unit abort: nothing do more
+unit 14
+-- TGBA!
+0.0263788700104  ---- Automata construction Time 
+unit abort: nothing do more
+unit 15
+-- TGBA!
+0.0267779827118  ---- Automata construction Time 
+unit abort: nothing do more
+---Result---
+SAT?   :  None
+results:  [True]
+total sat time: 	4.79400587082
+	make_graph(scc_u): 	0.765363931656
+	total gen_smt: graph->mdg->mdg(scc) 	3.0194401741
+	do_sat(total_ex_smt): 	0.477104902267
+		g_nodes 	17
+		g_edges 	129
+		mdg_nodes 	17
+		mdg_edges 	573
+		smt_gencode_time 	0.0279960632324
+		smt_solver_execute_time 	0.47708106041
+	make_graph(scc_u): 	0.0351059436798
+	make_graph(scc_u): 	0.0327301025391
+	make_graph(scc_u): 	0.0365240573883
+	make_graph(scc_u): 	0.0364351272583
+	make_graph(scc_u): 	0.0306768417358
+	make_graph(scc_u): 	0.0333440303802
+	make_graph(scc_u): 	0.0414428710938
+	make_graph(scc_u): 	0.0385458469391
+	make_graph(scc_u): 	0.0363261699677
+	make_graph(scc_u): 	0.0366570949554
+	make_graph(scc_u): 	0.0333909988403
+	make_graph(scc_u): 	0.0339300632477
+	make_graph(scc_u): 	0.035619020462
+	make_graph(scc_u): 	0.0346989631653
+	make_graph(scc_u): 	0.0348229408264
+------------
+None
+# elevetor-3
+# 0:30 for ltl2tgba
+--------------------- Round ---------------------------
+----- Parsing  '(([]((loc_0) || (loc_1) || (loc_2))) && ([]((loc_0 -> ((! loc_1) && (! loc_2))) && (loc_1 -> ((! loc_0) && (! loc_2))) && (loc_2 -> ((! loc_0) && (! loc_1))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))) && ((req_btn_2 -> (<>loc_2 && (loc_2  V req_l_2)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))) && ((loc_2 && req_l_2) -> (open && (move V (loc_2 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))) && ((loc_2 && move) -> (req_btn_2 V (!req_l_2 || req_btn_2))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open) && ((loc_2 && ! req_l_2) -> !open))) && ([](((loc_0 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_1)))))) && ([](((loc_2 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)))))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP^(3*T(move)+1*T(!move&&open))<=2&&MP_(5*T(loc_0))>=1&&MP_(100*T(loc_0))<=1&&MP_(10*T(req_btn_2))>=1' -----
+sat_units: 16 [<__main__.MpnfUnit instance at 0x103038710>, <__main__.MpnfUnit instance at 0x103123320>, <__main__.MpnfUnit instance at 0x10304e4d0>, <__main__.MpnfUnit instance at 0x102f8c0e0>, <__main__.MpnfUnit instance at 0x102f8c170>, <__main__.MpnfUnit instance at 0x102f8c128>, <__main__.MpnfUnit instance at 0x102f8c050>, <__main__.MpnfUnit instance at 0x102f8c1b8>, <__main__.MpnfUnit instance at 0x103040170>, <__main__.MpnfUnit instance at 0x103040098>, <__main__.MpnfUnit instance at 0x103040248>, <__main__.MpnfUnit instance at 0x103040440>, <__main__.MpnfUnit instance at 0x103040320>, <__main__.MpnfUnit instance at 0x103040200>, <__main__.MpnfUnit instance at 0x10303db48>, <__main__.MpnfUnit instance at 0x10303d9e0>]
+unit 0
+-- BA!
+0.26259803772  ---- Automata construction Time 
+^CTraceback (most recent call last):
+  File "./ltlmpsat.py", line 887, in <module>
+    sat = satmain2(opts.formula, opts)
+  File "./ltlmpsat.py", line 707, in satmain2
+    sat_content.strat_all_through_old()
+  File "./ltlmpsat.py", line 652, in strat_all_through_old
+    unit.generate_smtcode_old()
+  File "./ltlmpsat.py", line 547, in generate_smtcode_old
+    self.mdg = get_weighted_graph(self.graph, self.pair_mp_prop, self.opts)
+  File "./ltlmpsat.py", line 81, in get_weighted_graph
+    m = tltl.get_weighted_uhlan(mps, UDPs)
+  File "/Users/taka/Dropbox/code/ltlmp_sat/tree_ltlmp.py", line 431, in get_weighted_uhlan
+    newlist.extend(mp__(mps, prop))
+  File "/Users/taka/Dropbox/code/ltlmp_sat/tree_ltlmp.py", line 436, in mp__
+    mps0 = copy.deepcopy(mps)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 163, in deepcopy
+    y = copier(x, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 230, in _deepcopy_list
+    y.append(deepcopy(a, memo))
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 163, in deepcopy
+    y = copier(x, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 298, in _deepcopy_inst
+    state = deepcopy(state, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 163, in deepcopy
+    y = copier(x, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 257, in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 163, in deepcopy
+    y = copier(x, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 230, in _deepcopy_list
+    y.append(deepcopy(a, memo))
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 163, in deepcopy
+    y = copier(x, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 298, in _deepcopy_inst
+    state = deepcopy(state, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 163, in deepcopy
+    y = copier(x, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 257, in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 163, in deepcopy
+    y = copier(x, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 230, in _deepcopy_list
+    y.append(deepcopy(a, memo))
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 163, in deepcopy
+    y = copier(x, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 298, in _deepcopy_inst
+    state = deepcopy(state, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 163, in deepcopy
+    y = copier(x, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 257, in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 163, in deepcopy
+    y = copier(x, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 230, in _deepcopy_list
+    y.append(deepcopy(a, memo))
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 163, in deepcopy
+    y = copier(x, memo)
+  File "/usr/local/Cellar/python/2.7.8/Frameworks/Python.framework/Versions/2.7/lib/python2.7/copy.py", line 284, in _deepcopy_inst
+    if hasattr(x, '__deepcopy__'):
+KeyboardInterrupt
+
+----- Parsing  '(([]((loc_0) || (loc_1) || (loc_2))) && ([]((loc_0 -> ((! loc_1) && (! loc_2))) && (loc_1 -> ((! loc_0) && (! loc_2))) && (loc_2 -> ((! loc_0) && (! loc_1))))) && ([](((req_btn_0 -> (<>loc_0 && (loc_0  V req_l_0)))) && ((req_btn_1 -> (<>loc_1 && (loc_1  V req_l_1)))) && ((req_btn_2 -> (<>loc_2 && (loc_2  V req_l_2)))))) && ([](((loc_0 && req_l_0) -> (open && (move V (loc_0 || move)))) && ((loc_1 && req_l_1) -> (open && (move V (loc_1 || move)))) && ((loc_2 && req_l_2) -> (open && (move V (loc_2 || move)))))) && ([](((loc_0 && move) -> (req_btn_0 V (!req_l_0 || req_btn_0))) && ((loc_1 && move) -> (req_btn_1 V (!req_l_1 || req_btn_1))) && ((loc_2 && move) -> (req_btn_2 V (!req_l_2 || req_btn_2))))) && ([](((loc_0 && ! req_l_0) -> !open) && ((loc_1 && ! req_l_1) -> !open) && ((loc_2 && ! req_l_2) -> !open))) && ([](((loc_0 && req_l_2) -> ((!loc_2 U (!loc_2 && loc_1)))))) && ([](((loc_2 && req_l_0) -> ((!loc_0 U (!loc_0 && loc_1)))))) && ([](open -> (!open V (!open || !move)))) && ([](!open -> (open V (open || move)))) && ([](open -> <> open_timed_out)) && ([]((open_btn && !open_timed_out) -> open_req)) && ([](open_timed_out-> !open)) && ([]((close_btn && !open_req) -> !open)) && ([]((open_req && !move) -> open)))&&MP^(3*T(move)+1*T(!move&&open))<=2&&MP_(5*T(loc_0))>=1&&MP_(100*T(loc_0))<=1&&MP_(10*T(req_btn_2))>=1' -----
+sat_units: 16 [<__main__.MpnfUnit instance at 0x10543f710>, <__main__.MpnfUnit instance at 0x10552a320>, <__main__.MpnfUnit instance at 0x1054554d0>, <__main__.MpnfUnit instance at 0x1053930e0>, <__main__.MpnfUnit instance at 0x105393170>, <__main__.MpnfUnit instance at 0x105393128>, <__main__.MpnfUnit instance at 0x105393050>, <__main__.MpnfUnit instance at 0x1053931b8>, <__main__.MpnfUnit instance at 0x105447170>, <__main__.MpnfUnit instance at 0x105447098>, <__main__.MpnfUnit instance at 0x105447248>, <__main__.MpnfUnit instance at 0x105447440>, <__main__.MpnfUnit instance at 0x105447320>, <__main__.MpnfUnit instance at 0x105447200>, <__main__.MpnfUnit instance at 0x105444b48>, <__main__.MpnfUnit instance at 0x1054449e0>]
+unit 0
+-- TGBA!
+13.0929558277  ---- Automata construction Time 
+  -- DiGraph Construction Time:  0.199074983597
+			 scc time: 0.191418886185
+
